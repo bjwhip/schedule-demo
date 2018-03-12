@@ -1,0 +1,32 @@
+<div class="card" *ngFor="let staff of staff">
+    <!-- <img class="card-img-top" src="{{ staff.image_url }}" alt="Card image cap" width="100%"> -->
+
+    <div class="card-block">
+      <h3 class="card-title">Name: {{ staff.name }}</h3>
+
+      <p class="card-text">Availability: {{ staff.availableHours }}</p>
+
+      <p class="card-text"><small class="text-muted">Schedule: {{ staff.scheduledHours }}</small></p>
+
+      <div>
+          <p class="card-text"> Available after Schedule: {{ scheduleableHours(staff.availableHours, staff.scheduledHours) }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Combined Items:</h2>
+    <div class="card" *ngFor="let item of combinedItems">
+      <div *ngFor="let item of item">
+        <ul>
+          <li>Name: {{ item.name}}</li>
+          <li>Available Hours: {{ item.availableHours}}</li>
+          <li>Combined Schedule: {{ item.scheduledHours}}</li>
+        </ul>
+        <hr />
+      </div>
+    </div>
+  </div>
+
+
+  <button (click)="combineStaff()" class="btn btn-primary">Combine Staff Items</button>
